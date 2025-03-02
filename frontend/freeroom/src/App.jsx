@@ -18,6 +18,7 @@ import {
   Card,
 } from '@mui/material';
 import freeRoomsLogo from './assets/freeRoomsLogo.png';
+import freeroomsDoorClosed from './assets/freeroomsDoorClosed.png';
 import buildingData from './assets/data.json';
 const images = import.meta.glob('./assets/*', { eager: true });
 
@@ -31,9 +32,15 @@ import {
 } from '@mui/icons-material';
 function App() {
   const [buildings, setBuildings] = useState([]);
+  const [isDoorOpen, setIsDoorOpen] = useState(true);
+
   useEffect(() => {
     setBuildings(buildingData);
   }, []);
+
+  const handleToggleDoor = () => {
+    setIsDoorOpen((prev) => !prev);
+  };
 
   console.log(buildings);
   return (
@@ -56,9 +63,10 @@ function App() {
             }}
           >
             <img
-              src={freeRoomsLogo}
+              onClick={handleToggleDoor}
+              src={isDoorOpen ? freeRoomsLogo : freeroomsDoorClosed}
               alt="Freerooms"
-              style={{ height: 30, marginRight: 10 }}
+              style={{ height: 30 }}
             />
             <Typography variant="h6" sx={{ color: '#F07021' }}>
               {' '}
