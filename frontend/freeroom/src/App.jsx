@@ -160,40 +160,58 @@ function App() {
           spacing={2}
           padding={2}
           position="relative"
-          sx={{ marginTop: '20vh' }}
+          sx={{ marginTop: '20vh', padding: 0 }}
         >
           {buildings.map((building) => (
-            <Grid item xs={12} sm={6} md={4} key={building.name}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={images[`./assets/${building.building_file}`]?.default}
-                  alt={building.name}
-                />
-                <CardContent
+            <Grid item xs={12} sm={6} md={2.4} key={building.name}>
+              <Card
+                sx={{
+                  backgroundImage: images[
+                    `./assets/${building.building_picture}`
+                  ]
+                    ? `url(${
+                        images[`./assets/${building.building_picture}`].default
+                      })`
+                    : 'none',
+                  height: '300px',
+                  backgroundSize: 'cover',
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    background: 'white',
+                    color: 'black',
+                    padding: '3px 7px',
+                    borderRadius: 5,
+                    position: 'relative',
+                    top: 10,
+                    left: 10,
+                    zIndex: 999,
+                    fontSize: '0.5em',
+                    margin: '5px',
+                    width: '80px',
+                  }}
+                >
+                  {building.rooms_available} rooms available
+                </Typography>
+                <Button
                   sx={{
                     backgroundColor: '#D67232',
                     color: 'white',
-                    textAlign: 'center',
+                    alignItems: 'left',
+                    borderRadius: '10px',
+                    height: '40px',
+                    width: '95%',
+                    marginTop: '220px',
+                    justifyContent: 'flex-start',
+                    position: 'relative',
                   }}
                 >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      background: 'white',
-                      color: 'black',
-                      padding: '3px 7px',
-                      borderRadius: 5,
-                      position: 'absolute',
-                      top: 10,
-                      left: 10,
-                    }}
-                  >
-                    {building.rooms_available} rooms available
+                  <Typography sx={{ fontSize: '0.8em', textAlign: 'left' }}>
+                    {building.name}
                   </Typography>
-                  <Typography variant="h6">{building.name}</Typography>
-                </CardContent>
+                </Button>
               </Card>
             </Grid>
           ))}
