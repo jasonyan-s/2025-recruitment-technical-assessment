@@ -129,7 +129,7 @@ function App() {
               display: 'flex',
               position: 'relative',
               justifyContent: 'space-around',
-              marginBottom: '10px',
+              marginBottom: '15px',
               width: '100%',
               top: '0px',
             }}
