@@ -129,6 +129,7 @@ function App() {
               display: 'flex',
               position: 'relative',
               justifyContent: 'space-around',
+              marginBottom: '10px',
               width: '100%',
               top: '0px',
             }}
@@ -168,7 +169,7 @@ function App() {
           spacing={2}
           padding={2}
           position="relative"
-          sx={{ marginTop: '20vh', padding: 0 }}
+          sx={{ marginTop: '15vh', padding: 0 }}
         >
           {buildings.map((building) => (
             <Grid item xs={12} sm={6} md={2.4} key={building.name}>
