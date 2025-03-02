@@ -182,7 +182,7 @@ function App() {
                         images[`./assets/${building.building_picture}`].default
                       })`
                     : 'none',
-                  height: '300px',
+                  height: '250px',
                   backgroundSize: 'cover',
                 }}
               >
@@ -212,7 +212,7 @@ function App() {
                     borderRadius: '10px',
                     height: '40px',
                     width: '95%',
-                    marginTop: '220px',
+                    marginTop: '175px',
                     justifyContent: 'flex-start',
                     position: 'relative',
                   }}
