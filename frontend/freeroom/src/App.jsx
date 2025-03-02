@@ -12,8 +12,15 @@ import {
   Box,
   Button,
   Divider,
+  Grid,
+  CardContent,
+  CardMedia,
+  Card,
 } from '@mui/material';
 import freeRoomsLogo from './assets/freeRoomsLogo.png';
+import buildingData from './assets/data.json';
+const images = import.meta.glob('./assets/*', { eager: true });
+
 import {
   NightsStay,
   ViewModule,
@@ -23,8 +30,12 @@ import {
   Sort,
 } from '@mui/icons-material';
 function App() {
-  const [count, setCount] = useState(0);
+  const [buildings, setBuildings] = useState([]);
+  useEffect(() => {
+    setBuildings(buildingData);
+  }, []);
 
+  console.log(buildings);
   return (
     <Box sx={{ backgrundColour: 'white' }}>
       <Box display="flex" sx={{ flexDirection: 'column' }}>
@@ -143,6 +154,50 @@ function App() {
             </Button>
           </Box>
         </AppBar>
+
+        <Grid
+          container
+          spacing={2}
+          padding={2}
+          position="relative"
+          sx={{ marginTop: '20vh' }}
+        >
+          {buildings.map((building) => (
+            <Grid item xs={12} sm={6} md={4} key={building.name}>
+              <Card>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={images[`./assets/${building.building_file}`]?.default}
+                  alt={building.name}
+                />
+                <CardContent
+                  sx={{
+                    backgroundColor: '#D67232',
+                    color: 'white',
+                    textAlign: 'center',
+                  }}
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      background: 'white',
+                      color: 'black',
+                      padding: '3px 7px',
+                      borderRadius: 5,
+                      position: 'absolute',
+                      top: 10,
+                      left: 10,
+                    }}
+                  >
+                    {building.rooms_available} rooms available
+                  </Typography>
+                  <Typography variant="h6">{building.name}</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </Box>
   );
