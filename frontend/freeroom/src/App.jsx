@@ -170,7 +170,7 @@ function App() {
           padding={2}
           paddingBottom={0}
           position="relative"
-          sx={{ marginTop: '12vh', padding: 0 }}
+          sx={{ marginTop: '15vh', padding: 0 }}
         >
           {buildings.map((building) => (
             <Grid item xs={12} sm={6} md={2.4} key={building.name}>
